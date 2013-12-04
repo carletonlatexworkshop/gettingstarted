@@ -19,6 +19,9 @@
 % We'll use the standard Latin Modern typeface here.
 \RequirePackage{lmodern}
 
+% But we'll use the Inconsolata font for monospace
+\RequirePackage{inconsolata}
+
 % The Babel package modernizes the hyphenation routines.
 % Here, we configure it to use US English.
 \RequirePackage[american]{babel}
@@ -88,6 +91,7 @@
 % The listings package handles typesetting nice code listings.
 % We set it up here with some nice options.
 \usepackage{listings}
+\usepackage{xcolor}
 \lstset{
   basicstyle=\footnotesize\ttfamily,
   commentstyle=\color{gray},
