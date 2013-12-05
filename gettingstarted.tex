@@ -30,7 +30,6 @@ Otherwise, you may want to skip into specific sections.
   \Cref{s:firstpset} expands on \cref{s:firstdoc} to walk you through writing up your first problem set in \LaTeX{}.
 \end{itemize}
 
-
 \section{Preliminaries}
 \label{s:prelim}
 You've probably used a word processor (like Microsoft's Word or OpenOffice Writer) to produce documents in the past.
@@ -236,6 +235,46 @@ Just be sure to put all your \code{\textbackslash{}problem} and \code{\textbacks
 \subsection*{Example file}
 There's an example file with lots more details available as part of the \code{ccpset} package.
 Just open \filename{ccpset-example.tex} in your editor to take a look.
+
+\subsection*{Important information}
+A few miscellany you should know before you dive in:
+\begin{itemize}
+\item
+  \LaTeX{} will ignore single line breaks and treat double line breaks as paragraph breaks.
+  It's common practice to put a line break at the end of each sentence to make your source code more readable.
+  Thus, you might type something like this:
+\begin{verbatim}
+This is the first sentence of a paragraph.
+This is the second sentence of the same paragraph, which we ought to make a little longer.
+
+This sentence is part of another paragraph.
+\end{verbatim}
+  and obtain this:
+  \begin{quote}
+    This is the first sentence of a paragraph.
+    This is the second sentence of the same paragraph, which we ought to make a little longer.
+
+    This sentence is part of another paragraph.
+  \end{quote}
+
+\item
+  Relatedly, \LaTeX{} will treat any number of spaces as the same thing as a single space.
+  Thus, you might type something like this:
+\begin{verbatim}
+This is a sentence.
+This    is     another     sentence.
+\end{verbatim}
+  and obtain this:
+  \begin{quote}
+    This is a sentence.
+    This    is     another     sentence.
+  \end{quote}
+
+\item
+  If you get errors from the compiler instead of your output, don't despair!
+  There are a few easy-to-fix problems that are the source of the vast majority of these errors.
+  There's a great discussion of these on the \LaTeX{} \href{https://en.wikibooks.org/wiki/LaTeX}{Wikibook}'s \href{https://en.wikibooks.org/wiki/LaTeX/Errors_and_Warnings}{Errors and Warnings} page.
+\end{itemize}
 
 \subsection*{Mathematical typesetting}
 This is all great if you just need to typeset text, but you probably want to use \LaTeX{} for your math homework!
