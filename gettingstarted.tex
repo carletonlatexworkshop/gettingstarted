@@ -159,7 +159,7 @@ The first part is the \emph{preamble}, which configures \LaTeX{} and tells it ab
   The \LaTeX{} compiler will ignore these lines; they're only there to be read by humans.
 
 \item
-  Anything that starts with a \code{\textbackslash} is a \emph{command}.
+  Anything that starts with a \code{\textbackslash} is a \emph{command}\footnote{Note that this implies that you can't get a \textbackslash{} just by typing \enquote{\code{\textbackslash{}}}! \code{\textbackslash{}} is a \emph{control character}, which means that \LaTeX{} treats it specially. We'll see more of these later.}.
   Each command can take some \emph{arguments}, which are contained in curly braces (\code{\{} and \code{\}}), and possibly an \emph{optional argument}, which is contained in square braces (\code{[} and \code{]}).
 
 \item
