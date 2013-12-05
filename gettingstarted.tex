@@ -5,18 +5,29 @@
 \author{Carleton College \LaTeX{} workshop}
 \date{}
 
+\newcommand*{\code}[1]{\texttt{#1}}
+\newcommand*{\filename}[1]{\texttt{#1}}
+\newcommand*{\inst}[1]{\textbf{#1}}
+
 \DeclareMathOperator{\dd}{d}
+
+\usepackage{marvosym}
 
 \begin{document}
 \maketitle
 
 Hello, and welcome to \LaTeX{}!
 If you're just hearing about \LaTeX{} for the first time, you should read this document once through from beginning to end before you do anything with your computer.
-\Cref{s:prelim} is a brief introduction to the philosophy and core concepts of \LaTeX{} as a system for producing documents.
-\Cref{s:yourcomp} contains instructions for setting up a \LaTeX{} environment on your own computer.
+Otherwise, you may want to skip into specific sections.
+\begin{itemize}
+\item
+  \Cref{s:prelim} is a brief introduction to the philosophy and core concepts of \LaTeX{} as a system for producing documents.
+\item
+  \Cref{s:yourcomp} contains instructions for setting up a \LaTeX{} environment on your own computer.
+\item
+  \Cref{s:firstdoc} describes how to write a minimal compileable document and make a PDF out of it.
+\end{itemize}
 
-If you have already attended a live version of Day 1 of the workshop, you may want to just dive into the parts of this document with specific instructions.
-\Cref{s:yourcomp} has instructions for installing \LaTeX{}.
 
 \section{Preliminaries}
 \label{s:prelim}
@@ -24,7 +35,7 @@ You've probably used a word processor (like Microsoft's Word or OpenOffice Write
 \LaTeX{} is also a way to produce documents, but it's very different.
 
 A typical \LaTeX{} document looks something like this:
-\begin{lstlisting}[frame=single,caption=Basic \LaTeX{} example,label=lst:basicex]
+\begin{lstlisting}[frame=single,caption=Basic \LaTeX{} example,label=lst:basicex, language=TeX]
   \documentclass{article}
   \title{Article title}
   \author{Author name}
@@ -118,4 +129,87 @@ Now that \TeX{} Live is installed, your computer is ready to edit and compile \L
 Go ahead and open up \TeX{}works from wherever new applications go in your operating system.
 You should see a blank text-editing window.
 You're ready to begin!
+
+\section{Your first \LaTeX{} document}
+\label{s:firstdoc}
+\inst{Grab a copy of the Carleton problem set style and template.}
+This should consist of three files:
+\begin{itemize}
+\item
+  \filename{ccpset.sty}, a \enquote{style file} that tells \LaTeX{} how to style and structure your document;
+\item
+  \filename{ccpset.tex}, a stripped-down template ready for you to use for your problem sets; and
+\item
+  \filename{ccpset-example.tex}, an example document prepared using the style and template with lots of documentation and explainations.
+\end{itemize}
+
+\inst{Put the style file and template in the same directory, then open the template in your text editor.}
+Here's what you should see:
+
+\lstinputlisting[frame=single, caption=The Carleton problem set template, label=ccpsetempty, language=TeX]{homework/ccpset.tex}
+
+Let's take a quick tour of the important features of this file and edit it as we go.
+The first part is the \emph{preamble}, which configures \LaTeX{} and tells it about your document.
+
+\begin{itemize}
+\item
+  Any line that starts with a \code{\%} is a \emph{comment}.
+  The \LaTeX{} compiler will ignore these lines; they're only there to be read by humans.
+
+\item
+  Anything that starts with a \code{\textbackslash} is a \emph{command}.
+  Each command can take some \emph{arguments}, which are contained in curly braces (\code{\{} and \code{\}}), and possibly an \emph{optional argument}, which is contained in square braces (\code{[} and \code{]}).
+
+\item
+  The command \code{\textbackslash{}documentclass} on the first line sets the document's \emph{class}; in this case, it is set to \code{article}.
+  Document classes are used to set up things like page size, pagination, header formatting, and other large-scale things.
+  The optional argument \code{twoside} tells \code{article} to set things up for double-sided printing, which changes how margins are set up.
+
+\item
+  The command \code{\textbackslash{}usepackage} tells \LaTeX{} to load a \emph{package}, which can execute lots of code on your behalf.
+  The \code{ccpset} package configures things for a Carleton problem set, and the \code{lmodern} package fixes some problems with the default \LaTeX{} fonts.
+
+\item
+  The commands \code{\textbackslash{}title}, \code{\textbackslash{}author}, \code{\textbackslash{}date}, and \code{\textbackslash{}prof} set the information that will be used to make the document's title header.
+  \inst{Go ahead and replace their arguments with some of your own; for example, replace \enquote{Author} with your own name.}
+  Be sure to leave the opening (\code{\{}) and closing (\code{\}}) braces!
+\end{itemize}
+
+The second part of the file is the \emph{body}, where you write the actual text of your document.
+\begin{itemize}
+\item
+  The entire body is wrapped in the \enquote{document} \emph{environment}, which starts with \code{\textbackslash{}begin\{document\}} and ends with \code{\textbackslash{}end\{document\}}.
+
+\item
+  The command \code{\textbackslash{}maketitle\{\}} tells \LaTeX{} to typeset the title of your document.
+
+\item
+  The command \code{\textbackslash{}section} tells \LaTeX{} to start a document section.
+  The \emph{starred version} \code{\textbackslash{}section*}, which we use here, results in an unnumbered section.
+  \inst{Go ahead and give this section a name by replacing \enquote{Section name}.}
+
+\item
+  The \code{pset} environment is defined by the \code{ccpset} package which we loaded in the preamble.
+  It is a \enquote{list-like environment}; it consists of a sequence of \code{\textbackslash{}problem}s and \code{\textbackslash{}exercise}s, each of which creates another item in the list.
+  \inst{Go ahead and write some text after the \code{\textbackslash{}problem}.}
+\end{itemize}
+
+That's it!
+You now have a complete \LaTeX{} file, ready to go.
+
+Of course, you wouldn't want to submit it like this---what you have right now is \emph{code}, not a beautiful document.
+We still need to \emph{compile} the source code you've prepared into a typeset PDF.
+How you do this will depend on your choice of text editor.
+\begin{itemize}
+\item
+  If you're using the \TeX{}works editor, there should be a small green button with the standard \enquote{Play} symbol (\Forward) next to a drop-down box.
+  Make sure the box says \enquote{pdf\LaTeX{}}, then \inst{hit the button!}
+
+\item
+  % TODO: Instructions for whatever they have in the labs.
+\end{itemize}
+
+If everything went according to plan, you should now be looking at a nicely-typeset PDF of your problem set.
+Congratulations!
+You \LaTeX{}ed!
 \end{document}
