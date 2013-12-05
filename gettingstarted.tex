@@ -26,6 +26,8 @@ Otherwise, you may want to skip into specific sections.
   \Cref{s:yourcomp} contains instructions for setting up a \LaTeX{} environment on your own computer.
 \item
   \Cref{s:firstdoc} describes how to write a minimal compileable document and make a PDF out of it.
+\item
+  \Cref{s:firstpset} expands on \cref{s:firstdoc} to walk you through writing up your first problem set in \LaTeX{}.
 \end{itemize}
 
 
@@ -212,4 +214,31 @@ How you do this will depend on your choice of text editor.
 If everything went according to plan, you should now be looking at a nicely-typeset PDF of your problem set.
 Congratulations!
 You \LaTeX{}ed!
+
+\section{Your first real problem set}
+\label{s:firstpset}
+Now it's time to use \LaTeX{} to typeset one of your problem sets.
+It's not much different than what we just did in \cref{s:firstdoc}!
+We just need to talk about how to add more problems and sections.
+
+\subsection*{Sections}
+If you want to add more sections, you can do so by typing \code{\textbackslash{}section*\{Name of Section\}} at the place where you want the section to break.
+This must happen \emph{outside} the \code{pset} environment, so be sure to \code{\textbackslash{}end\{pset\}} before you \code{\textbackslash{}section} and to \code{\textbackslash{}begin\{pset\}} after.
+
+You can also create nested sections.
+\LaTeX{} has support for four layers (\code{section}, \code{subsection}, \code{subsubsection}, and \code{subsubsubsection}), but realistically you should probably stay at \code{subsection} and above for normal documents.
+
+\subsection*{More problems}
+To add more problems or exercises to your problem set, just call \code{\textbackslash{}problem} or \code{\textbackslash{}exercise} for each one.
+Be sure to give each one a name as an argument; for example, you could indicate Exercise 4.3(b) by typing \code{\textbackslash{}exercise\{4.3(b)\}}.
+Just be sure to put all your \code{\textbackslash{}problem} and \code{\textbackslash{}exercise} commands inside a \code{pset} environment!
+
+\subsection*{Example file}
+There's an example file with lots more details available as part of the \code{ccpset} package.
+Just open \filename{ccpset-example.tex} in your editor to take a look.
+
+\subsection*{Mathematical typesetting}
+This is all great if you just need to typeset text, but you probably want to use \LaTeX{} for your math homework!
+As illustrated in \cref{eq:statsthing,eq:greens}, \LaTeX{} is great at this, but it does require a bit of explanation.
+Check out the Math Typesetting Guide for more information.
 \end{document}
