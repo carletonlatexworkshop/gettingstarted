@@ -23,7 +23,7 @@ Otherwise, you may want to skip into specific sections.
 \item
   \Cref{s:prelim} is a brief introduction to the philosophy and core concepts of \LaTeX{} as a system for producing documents.
 \item
-  \Cref{s:yourcomp} contains instructions for setting up a \LaTeX{} environment on your own computer.
+  \Cref{s:yourcomp} contains instructions for getting up and running with the \LaTeX{} software so you can write documents.
 \item
   \Cref{s:firstdoc} describes how to write a minimal compileable document and make a PDF out of it.
 \item
@@ -92,8 +92,8 @@ This code is the interpreted by a computer program which renders it into a nicel
 Of course, it also has some disadvantages and costs.
 \begin{itemize}
 \item
-  You'll need to install some software to \enquote{compile} \LaTeX{} source, and you'll probably need a better text editor than Notepad or TextEdit.
-  We'll take care of that shortly.
+  \enquote{Compiling} \LaTeX{} source into the finished PDF requires specialized software.
+  We'll end up delegating this task to \enquote{the cloud}, as we'll see shortly.
 
 \item
   It's hard to use \LaTeX{} for page layout.
@@ -108,46 +108,29 @@ Of course, it also has some disadvantages and costs.
 
 \section{Getting your computer set up for \LaTeX{}}
 \label{s:yourcomp}
-In order to use \LaTeX{} to write documents, you need two pieces of software: a \LaTeX{} environment, which \enquote{compiles} your source files into PDF output, and a suitable text editor.
-Both of these are set up and ready to go on the lab computers in the CMC, so one option is just to fire one of those up and skip ahead to the next section.
+The version of a \LaTeX{} document that you work on will consist of source code, similar to the HTML code for a web page or the source code for a computer program.
+This needs to be processed (or \enquote{compiled}) to produce the finished PDF document.
 
-Another option is to do all your \LaTeX{} work \enquote{in the cloud}.
-There are several services which allow you to write your \LaTeX{} documents in an editor inside your browser, have them compiled by the server, and then rendered right there in real time.
-This can be a great option, but as with any cloud service you should be careful about where your files are---you don't want your comps paper suddenly disappearing if a company goes out of business!
-Some of the more popular options in this category are \href{http://www.sharelatex.com}{Share\LaTeX{}}, \href{http://www.writelatex.com}{Write\LaTeX{}}, and \href{http://www.latexlab.org}{\LaTeX{}Lab}.
-A discussion of their features is beyond the scope of this guide, but you should definitely check them out!
-If you're using one of these or otherwise already have a \LaTeX{} setup, feel free to skip ahead to the next section.
+Traditionally, this is done with software installed on your computer.
+The lab computers in the CMC are set up with such software on both OSX and Windows, so you are welcome to use that for your \LaTeX{} work.
+If you wish to do this on your own computer, you should download and install \href{http://www.tug.org/texlive/acquire-netinstall.html}{\TeX{} Live}, which includes both a \LaTeX{} compiler and the \TeX{}Works editing software.
 
-OK, you're still here, so you must want to get this going on your own computer.
-Great!
-The first step is to download and install \href{http://www.tug.org/texlive/acquire-netinstall.html}{\TeX{} Live}.
-This is a \LaTeX{} \enquote{distribution}, which includes the compilers and all the support files you need to work with \LaTeX{} documents; it's available for Windows and OSX (along with most major Linux distributions, but you should install on those using their package managers).
-You also need a suitable text editor, but \TeX{} Live comes with the very capable \TeX{}works, so you're all set there.
-The full install is several gigabytes, so be sure to do this on a fast Internet connection.
-Come on back when you're done.
+Unfortunately, this software tends to be a bit complicated, and there's enough diversity among programs that it's very hard to write good general documentation.
+Thus, for this document and the rest of the workshop, we'll use \href{http://www.writelatex.com}{Write\LaTeX{}}, a \LaTeX{} editing and compilation suite that runs on a website.
+(It's the same idea as Google Docs, but for \LaTeX{} documents.)
 
-Now that \TeX{} Live is installed, your computer is ready to edit and compile \LaTeX{} documents.
-Go ahead and open up \TeX{}works from wherever new applications go in your operating system.
-You should see a blank text-editing window.
-You're ready to begin!
+To get started, just visit \url{http://www.writelatex.com} and click on \enquote{Create a new paper}.
+You don't even have to sign up for an account, but doing so will give you access to file management and other useful features, so it's recommended.
 
 \section{Your first \LaTeX{} document}
 \label{s:firstdoc}
-\inst{Grab a copy of the Carleton problem set style and template.}
-This should consist of three files:
-\begin{itemize}
-\item
-  \filename{ccpset.sty}, a \enquote{style file} that tells \LaTeX{} how to style and structure your document;
-\item
-  \filename{ccpset.tex}, a stripped-down template ready for you to use for your problem sets; and
-\item
-  \filename{ccpset-example.tex}, an example document prepared using the style and template with lots of documentation and explainations.
-\end{itemize}
+To get started, \inst{open a copy of the \href{}{Carleton problem set template}}.
+This consists of two files: \code{ccpset.sty}, a \enquote{style file} that works behind the scenes to format the document, and \code{ccpset.tex}, a \enquote{\TeX{} source file} that will be compiled into a document.
+Write\LaTeX{} will automatically open the document file for you.
 
-\inst{Put the style file and template in the same directory, then open the template in your text editor.}
-Here's what you should see:
+You should see something like \cref{lst:ccpsetempty}.
 
-\lstinputlisting[frame=single, caption=The Carleton problem set template, label=ccpsetempty, language=TeX]{homework/ccpset.tex}
+\lstinputlisting[float=phtb, frame=single, caption=The Carleton problem set template, label=lst:ccpsetempty, language=TeX]{homework/ccpset.tex}
 
 Let's take a quick tour of the important features of this file and edit it as we go.
 The first part is the \emph{preamble}, which configures \LaTeX{} and tells it about your document.
@@ -198,19 +181,9 @@ The second part of the file is the \emph{body}, where you write the actual text 
 That's it!
 You now have a complete \LaTeX{} file, ready to go.
 
-Of course, you wouldn't want to submit it like this---what you have right now is \emph{code}, not a beautiful document.
-We still need to \emph{compile} the source code you've prepared into a typeset PDF.
-How you do this will depend on your choice of text editor.
-\begin{itemize}
-\item
-  If you're using the \TeX{}works editor, there should be a small green button with the standard \enquote{Play} symbol (\Forward) next to a drop-down box.
-  Make sure the box says \enquote{pdf\LaTeX{}}, then \inst{hit the button!}
+If you're using Write\LaTeX{}, your document should have been automatically recompiling as you went; the rendered version is conveniently displayed in a pane to the right of the editing window.
+On the other hand, if you're using desktop software, you'll need to recompile manually.
 
-\item
-  % TODO: Instructions for whatever they have in the labs.
-\end{itemize}
-
-If everything went according to plan, you should now be looking at a nicely-typeset PDF of your problem set.
 Congratulations!
 You \LaTeX{}ed!
 
@@ -219,6 +192,7 @@ You \LaTeX{}ed!
 Now it's time to use \LaTeX{} to typeset one of your problem sets.
 It's not much different than what we just did in \cref{s:firstdoc}!
 We just need to talk about how to add more problems and sections.
+\inst{Open a new copy of the problem set template} and we'll begin.
 
 \subsection*{Sections}
 If you want to add more sections, you can do so by typing \code{\textbackslash{}section*\{Name of Section\}} at the place where you want the section to break.
